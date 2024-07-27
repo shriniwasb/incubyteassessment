@@ -51,4 +51,9 @@ describe('AppComponent', () => {
     expect(component.result).toBe(10);
   });
 
+  it('should throw an exception for negative numbers', () => {
+    component.input = '1,-2,3';
+    expect(() => component.add()).toThrowError('negative numbers not allowed');
+  });
+
 });
