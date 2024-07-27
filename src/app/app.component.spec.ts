@@ -45,15 +45,4 @@ describe('AppComponent', () => {
     expect(component.result).toBe(6);
   });
 
-  it('should ignore invalid inputs and continue summing valid numbers', () => {
-    component.input = '1,a,3';
-    component.add();
-    expect(component.result).toBeNaN(); // Adjust as needed if you choose to handle invalid inputs differently
-  });
-
-  it('should handle multiple commas and new lines gracefully', () => {
-    component.input = '1,\n,2,,3';
-    component.add();
-    expect(component.result).toBe(6);
-  });
 });

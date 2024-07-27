@@ -15,6 +15,10 @@ export class AppComponent {
       return;
     }
 
+    let delimiter = ',';
+    // Replace new lines with the delimiter or comma
+    this.input = this.input.replace(/\n/g, delimiter);
+    
     //creating array from string of numbers
     const numbers = this.input.replace(/\n/g, ',').split(',');
     let sum = 0;
