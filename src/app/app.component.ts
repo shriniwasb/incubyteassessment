@@ -9,18 +9,28 @@ export class AppComponent {
   public input: string = '';
   public result: number = 0;
 
-  add(): void {
+  add() {
     if (!this.input) {
       this.result = 0;
       return;
     }
 
     let delimiter = ',';
-    // Replace new lines with the delimiter or comma
-    this.input = this.input.replace(/\n/g, delimiter);
-    
-    //creating array from string of numbers
-    const numbers = this.input.replace(/\n/g, ',').split(',');
+    let numbersString = this.input.toString();
+
+    // Check for custom delimiter
+    if (this.input.startsWith('//')) {
+      // Extract the delimiter from the input
+      let delimiterEndIndex = numbersString.indexOf('\n');
+      delimiter = this.input.substring(2, delimiterEndIndex);
+      numbersString = this.input.substring(delimiterEndIndex + 1);
+    }
+  
+    // Replace new lines with the delimiter
+    numbersString = numbersString.replace(/\n/g, delimiter);
+  
+    // Split by the delimiter and sum up
+    const numbers = numbersString.split(delimiter);
     let sum = 0;
 
     //doing sum of the numbers from the array

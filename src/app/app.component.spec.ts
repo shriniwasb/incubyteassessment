@@ -45,4 +45,10 @@ describe('AppComponent', () => {
     expect(component.result).toBe(6);
   });
 
+  it('should handle custom delimiter with new lines', () => {
+    component.input = '//;\n1;2;3\n4';
+    component.add();
+    expect(component.result).toBe(10);
+  });
+
 });
