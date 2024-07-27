@@ -6,5 +6,27 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'incubyteassessment';
+  public input: string = '';
+  public result: number = 0;
+
+  add(): void {
+    if (!this.input) {
+      this.result = 0;
+      return;
+    }
+
+    //creating array from string of numbers
+    const numbers = this.input.replace(/\n/g, ',').split(',');
+    let sum = 0;
+
+    //doing sum of the numbers from the array
+    for (let num of numbers) {
+      if (num.trim()) {
+        sum += parseInt(num, 10);
+      }
+    }
+
+    //sum
+    this.result = sum;
+  }
 }
